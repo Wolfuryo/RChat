@@ -89,8 +89,6 @@ Rchat.config.init_send = function() {
         Rchat.config.send(Rchat.config.comp(_userdata.username, _userdata.avatar.split("src=")[1].split("   ")[0].split("\"")[1], $("#chat_form_input").val()));
     });
 };
-$(function() {
     Rchat.init();
     Rchat.config.start_chat();
     Rchat.config.init_send();
-})
