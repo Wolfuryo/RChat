@@ -1,7 +1,7 @@
 Rchat.internal={};
 Rchat.internal.init=function(){
 $("body").append(Rchat.config.html);
-Rchat.internal.op_cl($("#chat_btn");
+Rchat.internal.op_cl($("#chat_btn"));
 };
 Rchat.internal.op_cl=function(elem){
 if(localStorage.getItem("chat_op")=="1"){
