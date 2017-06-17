@@ -2,4 +2,12 @@ Rchat.internal={};
 Rchat.internal.init=function(){
 $("body").append(Rchat.config.html)
 };
+Rchat.internal.op_cl=function(elem){
+if(localStorage.getItem("chat_op")=="1"){
+$("#chat_inner").toggleClass("chat_open");
+};
+elem.click(function(e){
+$("#chat_inner").toggleClass("chat_open");
+});
+};
 Rchat.internal.init();
