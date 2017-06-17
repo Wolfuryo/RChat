@@ -19,7 +19,7 @@ Rchat.internal.vars.sending=0;
 Rchat.internal.vars.receiving=0;
 Rchat.internal.get_data=function(p){
 if(!Rchat.internal.vars.receiving) return;
-$.get("/t"+Rchat.config.topic+((p==0)?"":p*Rchat.internal.vars.mess_per_page)+"-"+((p=="l"?"?view=newest":""), function(data){
+$.get("/t"+Rchat.config.topic+((p==0 || p=="l")?"":p*Rchat.internal.vars.mess_per_page)+"-"+((p=="l")?"?view=newest":""), function(data){
 alert(data);
 });
 };
