@@ -52,8 +52,10 @@ $("#chat_btn").append("<span style='color:yellow'>!</span>");
                     } else {
                         if (m.eq(i).html() != Rchat.internal.vars.ct[i]) {
                             $("#chat_content").append(m.eq(i).html());
+if(localStorage.chat_op=="0"){
+$("#chat_btn").append("<span style='color:yellow'>!</span>");
+};
                             $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
-
                             Rchat.internal.vars.ct[i] = m.eq(i).html();
                         }
                     };
