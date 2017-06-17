@@ -116,11 +116,11 @@
 
 #chat_content>#chat_bl>#chat_group>#chat_name {
     position: relative;
-    top: -9px;
-    border-left: 2px solid #055
-    margin-left: 2px;
+    top: -12px;
     background: #088;
-    padding: 1px;
+    padding-left: 2px;
+    margin-left: 2px;
+    border-left: 2px solid #f2f2f2;
 }
 
 #chat_content>#chat_bl>#chat_group>* {
