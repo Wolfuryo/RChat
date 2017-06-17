@@ -92,10 +92,13 @@
     border-radius: 100%;
     width: 30px;
     height: 30px;
+    border: 2px solid #f2f2f2;
 }
 
 #chat_content>#chat_bl>#chat_group>#chat_avatar {
     padding-top: 3px;
+    border-radius: 100%;
+    background:#088;
 }
 
 #chat_content>#chat_bl>#chat_group {
@@ -114,6 +117,10 @@
 #chat_content>#chat_bl>#chat_group>#chat_name {
     position: relative;
     top: -9px;
+    border-left: 2px solid #055
+    margin-left: 2px;
+    background: #088;
+    padding: 1px;
 }
 
 #chat_content>#chat_bl>#chat_group>* {
