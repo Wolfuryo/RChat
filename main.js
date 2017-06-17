@@ -1,5 +1,5 @@
 Rchat.internal={};
 Rchat.internal.init=function(){
-$("html").append(Rchat.config.html);
+$("body").append(Rchat.config.html)
 };
-Rchat.init();
+Rchat.internal.init();
