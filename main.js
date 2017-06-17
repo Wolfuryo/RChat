@@ -14,6 +14,7 @@ Rchat.internal.op_cl = function(elem) {
     };
     elem.click(function(e) {
         $("#chat_inner").toggleClass("chat_open");
+if($("#chat_btn>span").length!=0) $("#chat_btn>span").remove();
         localStorage.setItem("chat_op", $("#chat_inner").hasClass("chat_open") ? "1" : "0");
         Rchat.internal.vars.receiving = $("#chat_inner").hasClass("chat_open") ? 1 : 0;
     });
@@ -38,6 +39,9 @@ Rchat.internal.get_data = function() {
                 for (i; i < len; i++) {
                     Rchat.internal.vars.ct.push(m.eq(i).html());
                     $("#chat_content").append(m.eq(i).html());
+                    if(localStorage.chat_op=="0"){
+$("#chat_btn").append("<span style='color:yellow'>!</span>");
+};
                     $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
                 };
             } else {
