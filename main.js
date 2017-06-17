@@ -1,5 +1,4 @@
 Rchat.internal={};
-Rchat.config.topic=3;
 Rchat.internal.init=function(){
 $("body").append(Rchat.config.html);
 Rchat.internal.op_cl($("#chat_btn"));
