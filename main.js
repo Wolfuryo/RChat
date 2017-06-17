@@ -18,7 +18,7 @@ Rchat.internal.vars={};
 Rchat.internal.vars.sending=0;
 Rchat.internal.vars.receiving=0;
 Rchat.internal.vars.mess_per_page=20;
-Rhcat.internal.vars.oc=[];
+Rchat.internal.vars.oc=[];
 Rchat.internal.get_data=function(){
 if(!Rchat.internal.vars.receiving) return; 
 $.get("/t"+Rchat.config.topic+"-?view=newest", function(data){
