@@ -23,6 +23,7 @@ Rchat.internal.get_data=function(){
 if(!Rchat.config.receiving) return;
 $.get("/t"+Rchat.config.topic+"-?view=newest", function(data){
 var data_chats=$("#chat_sis", data);
+alert(data_chats.eq(0).html());
 var len=data_chats.length;
 var i=0;
 if(len<Rchat.internal.vars.oc.length) {
