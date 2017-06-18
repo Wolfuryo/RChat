@@ -24,12 +24,12 @@ Rchat.internal.op_cl = function(elem) {
     });
 };
 Rchat.internal.reset = function() {
+    if (Rchat.internal.vars.resetting) return;
     $("#chat_head>span").click(function() {
         $(this).css({
             cursor: "not-allowed",
             opacity: "0.9"
         });
-        if (!Rchat.internal.vars.resetting) return;
         Rchat.internal.vars.resetting = 1;
         localStorage.removeItem("chat_op");
         localStorage.removeItem("emo");
