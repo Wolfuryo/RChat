@@ -12,12 +12,10 @@ Rchat.internal.op_cl = function(elem) {
         $("#chat_inner").toggleClass("chat_open");
         Rchat.internal.vars.receiving = 1;
     };
-if(localStorage.getItem("chat_op")=="0" && parseInt($("#chat_btn_notif").text().match(/\d+/))!=0){
-$("#chat_btn_notif").html("0");
-};
     elem.click(function(e) {
         $("#chat_inner").toggleClass("chat_open");
         localStorage.setItem("chat_op", $("#chat_inner").hasClass("chat_open") ? "1" : "0");
+        $("#chat_btn_notif").text("0");
     });
 };
 Rchat.internal.vars = {};
