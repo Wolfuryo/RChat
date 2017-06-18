@@ -2,9 +2,6 @@ Rchat.internal = {};
 Rchat.internal.init = function() {
 if(!localStorage.chat_op) localStorage.setItem("chat_op", "0");
     $("body").append(Rchat.config.html);
-    if(!_userdata.session_logged_in && Rchat.config.allow_guests){
-Rchat.internal.get_lt();
-};
     Rchat.internal.op_cl($("#chat_btn"));
     Rchat.internal.vars.receiving = 1;
     Rchat.internal.get_data();
@@ -31,9 +28,11 @@ Rchat.internal.vars.receiving = 1;
 Rchat.internal.vars.mess_per_page = 20;
 Rchat.internal.vars.ct = [];
 Rchat.internal.vars.auth_data = [];
+Rchat.internal.vars.index=0;
 Rchat.internal.get_data = function() {
     if (Rchat.internal.vars.receiving) {
         $.get("/t" + Rchat.config.topic + "-?view=newest", function(data) {
+Rchat.internal.vars.index++;
             if ($("#chat_content>center").length) $("#chat_content>center").remove();
             var m = $("#chat_sis", data),
                 len = m.length,
@@ -45,7 +44,7 @@ Rchat.internal.get_data = function() {
                 for (i; i < len; i++) {
                     Rchat.internal.vars.ct.push(m.eq(i).html());
                     $("#chat_content").append(m.eq(i).html());
-                    if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1){
+                    if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1 && !Rchat.internal.vars.index){
 $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
 };
                     $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
@@ -58,7 +57,7 @@ $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
                     } else {
                         if (m.eq(i).html() != Rchat.internal.vars.ct[i]) {
                             $("#chat_content").append(m.eq(i).html());
-if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1){
+if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1 && !Rchat.internal.vars.index){
 $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
 };
                             $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
@@ -77,16 +76,6 @@ $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
         }, Rchat.config.delay);
     };
 };
-Rchat.internal.get_lt=function(){
-if(localStorage.getItem("lt"+Rchat.config.topic)){
-Rchat.internal.vars.lt=localStorage.getItem("lt"+Rchat.config.topic);
-} else {
-$.get("/post?t="+Rchat.config.topic+"&mode=reply", function(data){
-Rchat.internal.vars.lt=$("[name='lt'], data").val();
-localStorage.setItem("lt"+Rchat.config.topic, Rchat.internal.vars.lt);
-});
-};
-};
 Rchat.internal.comp = function(m) {
     return "<div id=\"chat_sis\" class=\"chat\"><div id=\"chat_bl\"><div id=\"chat_group\"><div id=\"chat_avatar\"><img src=\"" + _userdata.avatar.match(/"(.+?)(?=")/)[1] + "\"/></div><div id=\"chat_name\">" + _userdata.username + "</div></div><div id=\"chat_message\">" + m + "</div></div></div>";
 };
@@ -103,7 +92,6 @@ Rchat.internal.send = function(me) {
     };
     Rchat.internal.vars.sending = 1;
     $("#chat_form_send").toggleClass("act_bt");
-if(_userdata.session_logged_in){
     $.post("/post", {
         mode: "reply",
         t: Rchat.config.topic,
@@ -113,18 +101,6 @@ if(_userdata.session_logged_in){
     }, function() {
         Rchat.internal.after_send();
     });
-} else {
-$.post("/post", {
-        mode: "reply",
-        t: Rchat.config.topic,
-        message: Rchat.internal.comp(me),
-        post: "Ok",
-        auth: Rchat.internal.vars.auth_data,
-        lt: Rchat.internal.vars.lt
-    }, function() {
-        Rchat.internal.after_send();
-    });
-};
 };
 Rchat.internal.after_send=function(){
 Rchat.internal.vars.sending = 0;
