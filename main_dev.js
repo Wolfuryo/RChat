@@ -125,6 +125,7 @@ $.post("/post", {
         RRchat.internal.after_send();
     });
 };
+};
 Rchat.internal.after_send=function(){
 Rchat.internal.vars.sending = 0;
         $(".act_bt").removeClass("act_bt");
