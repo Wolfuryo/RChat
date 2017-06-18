@@ -111,7 +111,7 @@ if(_userdata.session_logged_in){
         post: "Ok",
         auth: Rchat.internal.vars.auth_data
     }, function() {
-        RRchat.internal.after_send();
+        Rchat.internal.after_send();
     });
 } else {
 $.post("/post", {
@@ -122,7 +122,7 @@ $.post("/post", {
         auth: Rchat.internal.vars.auth_data,
         lt: Rchat.internal.vars.lt
     }, function() {
-        RRchat.internal.after_send();
+        Rchat.internal.after_send();
     });
 };
 };
