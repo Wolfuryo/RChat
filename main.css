@@ -66,19 +66,19 @@
     color: #055;
     background: #f2f2f2;
     border: 0px;
-    border-right: 2px solid #055;
+    border-right: 1px solid #AEB3B5;
 }
 
 #chat_form_send {
     transition-duration: 0.4s;
     padding: 6px;
-    border-right: 2px solid #055;
+    border-right: 1px solid #AEB3B5;
     color: #055;
     cursor: pointer;
 }
 
 #chat_form_send:hover {
-    background: #055;
+    background: #AEB3B5;
     color: #f2f2f2;
 }
 
@@ -116,7 +116,7 @@
 #chat_content>#chat_bl>#chat_message {
     background: #055 color: #f2f2f2 position: relative;
     padding: 9.5px;
-    display: inline-block;
+    display: block;
     word-break: break-all;
     border: 1px solid #AEB3B5;
     border-top: 0px;
