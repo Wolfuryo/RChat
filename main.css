@@ -15,6 +15,12 @@
     opacity: 1.0;
 }
 
+#chat_btn_notif_con {
+    background: #099;
+    color: yellow;
+    padding: 5px;
+}
+
 #chat_inner {
     transition-duration: 0.4s;
     opacity: 0.0;
@@ -98,7 +104,7 @@
 #chat_content>#chat_bl>#chat_group>#chat_avatar {
     padding-top: 3px;
     border-radius: 100%;
-    background:#088;
+    background: #088;
 }
 
 #chat_content>#chat_bl>#chat_group {
