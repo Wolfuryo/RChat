@@ -84,8 +84,8 @@ Rchat.internal.vars.lt=localStorage.getItem("lt"+Rchat.config.topic);
 $.get("/post?t="+Rchat.config.topic+"&mode=reply", function(data){
 Rchat.internal.vars.lt=$("[name='lt'], data").val();
 localStorage.setItem("lt"+Rchat.config.topic, Rchat.internal.vars.lt);
-})
-}
+});
+};
 };
 Rchat.internal.comp = function(m) {
     return "<div id=\"chat_sis\" class=\"chat\"><div id=\"chat_bl\"><div id=\"chat_group\"><div id=\"chat_avatar\"><img src=\"" + _userdata.avatar.match(/"(.+?)(?=")/)[1] + "\"/></div><div id=\"chat_name\">" + _userdata.username + "</div></div><div id=\"chat_message\">" + m + "</div></div></div>";
