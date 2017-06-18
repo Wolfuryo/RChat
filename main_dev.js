@@ -12,6 +12,9 @@ Rchat.internal.op_cl = function(elem) {
         $("#chat_inner").toggleClass("chat_open");
         Rchat.internal.vars.receiving = 1;
     };
+if(localStorage.getItem("chat_op")=="0") && parseInt($("#chat_btn_notif").text().match(/\d+/))!=0){
+$("#chat_btn_notif").html("0");
+};
     elem.click(function(e) {
         $("#chat_inner").toggleClass("chat_open");
 if($("#chat_btn>span").length!=0) $("#chat_btn>span").remove();
@@ -21,7 +24,7 @@ if($("#chat_btn>span").length!=0) $("#chat_btn>span").remove();
 };
 Rchat.internal.vars = {};
 Rchat.internal.vars.sending = 0;
-Rchat.internal.vars.receiving = 0;
+Rchat.internal.vars.receiving = 1;
 Rchat.internal.vars.mess_per_page = 20;
 Rchat.internal.vars.ct = [];
 Rchat.internal.vars.auth_data = [];
@@ -39,8 +42,8 @@ Rchat.internal.get_data = function() {
                 for (i; i < len; i++) {
                     Rchat.internal.vars.ct.push(m.eq(i).html());
                     $("#chat_content").append(m.eq(i).html());
-                    if(localStorage.chat_op=="0"){
-$("#chat_btn").append("<span style='color:yellow'>!</span>");
+                    if(localStorage.chat_op=="0" && !m.eq(i).html().split(_userdata.username).length){
+$("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
 };
                     $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
                 };
@@ -52,8 +55,8 @@ $("#chat_btn").append("<span style='color:yellow'>!</span>");
                     } else {
                         if (m.eq(i).html() != Rchat.internal.vars.ct[i]) {
                             $("#chat_content").append(m.eq(i).html());
-if(localStorage.chat_op=="0"){
-$("#chat_btn").append("<span style='color:yellow'>!</span>");
+if(localStorage.chat_op=="0" && !m.eq(i).html().split(_userdata.username).length){
+$("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
 };
                             $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
                             Rchat.internal.vars.ct[i] = m.eq(i).html();
