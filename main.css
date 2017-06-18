@@ -79,7 +79,7 @@
 }
 
 #chat_form_send:hover {
-    background: #AEB3B5;
+    background: #2f2f2f;
     color: #f2f2f2;
 }
 
@@ -147,7 +147,7 @@
     position: absolute;
     bottom: 50px;
     left: 165px;
-    background: #f2f2f2;
+    background: gray;
     border: 2px solid #055;
     width: 200px;
     text-align: center;
@@ -163,20 +163,19 @@
     border-radius: 100%;
     width: 5px;
     height: 5p;
-    border: 2px solid #098;
-    background: #055;
+    border: 2px solid #6f6f6f;
+    background: #2f2f2f;
     cursor: pointer;
     margin: 1px;
 }
 
 #chat_smi_pop>span:hover {
-    border: 2px solid #055;
-    background: #098;
+    border: 2px solid #2f2f2f;
+    background: #6f6f6f;
 }
 
 #chat_smi_pop_head {
     padding: 3px;
-    background: #055;
+    background: #2f2f2f;
     color: #f2f2f2;
-    border-bottom: 2px solid #055;
 }
