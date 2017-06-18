@@ -17,7 +17,6 @@ $("#chat_btn_notif").html("0");
 };
     elem.click(function(e) {
         $("#chat_inner").toggleClass("chat_open");
-if($("#chat_btn>span").length!=0) $("#chat_btn>span").remove();
         localStorage.setItem("chat_op", $("#chat_inner").hasClass("chat_open") ? "1" : "0");
         Rchat.internal.vars.receiving = $("#chat_inner").hasClass("chat_open") ? 1 : 0;
     });
