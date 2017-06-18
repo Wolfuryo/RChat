@@ -16,7 +16,10 @@ Rchat.internal.op_cl = function(elem) {
     elem.click(function(e) {
         $("#chat_inner").toggleClass("chat_open");
         localStorage.setItem("chat_op", $("#chat_inner").hasClass("chat_open") ? "1" : "0");
-        $("#chat_btn_notif").text("0");
+if(localStorage.chat_op=="1" && !$("#chat_btn_notif").text()=="0"){     
+$("#chat_btn_notif").text("0");
+$('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
+};
     });
 };
 Rchat.internal.vars = {};
