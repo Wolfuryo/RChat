@@ -18,7 +18,6 @@ $("#chat_btn_notif").html("0");
     elem.click(function(e) {
         $("#chat_inner").toggleClass("chat_open");
         localStorage.setItem("chat_op", $("#chat_inner").hasClass("chat_open") ? "1" : "0");
-        Rchat.internal.vars.receiving = $("#chat_inner").hasClass("chat_open") ? 1 : 0;
     });
 };
 Rchat.internal.vars = {};
@@ -41,7 +40,7 @@ Rchat.internal.get_data = function() {
                 for (i; i < len; i++) {
                     Rchat.internal.vars.ct.push(m.eq(i).html());
                     $("#chat_content").append(m.eq(i).html());
-                    if(localStorage.chat_op=="0" && !m.eq(i).html().split(_userdata.username).length){
+                    if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1){
 $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
 };
                     $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
@@ -54,7 +53,7 @@ $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
                     } else {
                         if (m.eq(i).html() != Rchat.internal.vars.ct[i]) {
                             $("#chat_content").append(m.eq(i).html());
-if(localStorage.chat_op=="0" && !m.eq(i).html().split(_userdata.username).length){
+if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1){
 $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
 };
                             $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
