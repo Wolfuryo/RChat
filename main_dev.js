@@ -31,7 +31,7 @@ Rchat.internal.vars.auth_data = [];
 Rchat.internal.vars.index=0;
 Rchat.internal.get_data = function() {
     if (Rchat.internal.vars.receiving) {
-        $.get("/t" + Rchat.config.topic + "-?view=newest", function(data) {
+        $.get(Rchat.config.topic+"?view=newest", function(data) {
 Rchat.internal.vars.index++;
             if ($("#chat_content>center").length) $("#chat_content>center").remove();
             var m = $("#chat_sis", data),
@@ -94,7 +94,7 @@ Rchat.internal.send = function(me) {
     $("#chat_form_send").toggleClass("act_bt");
     $.post("/post", {
         mode: "reply",
-        t: Rchat.config.topic,
+        t: Rchat.config.topic.match(/\d+/),
         message: Rchat.internal.comp(me),
         post: "Ok",
         auth: Rchat.internal.vars.auth_data
