@@ -24,7 +24,7 @@ Rchat.internal.op_cl = function(elem) {
     });
 };
 Rchat.internal.reset = function() {
-    $("#chat_head_span").click(function() {
+    $("#chat_head>span").click(function() {
         $(this).css({
             cursor: "not-allowed",
             opacity: "0.9"
