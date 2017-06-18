@@ -2,6 +2,9 @@ Rchat.internal = {};
 Rchat.internal.init = function() {
 if(!localStorage.chat_op) localStorage.setItem("chat_op", "0");
     $("body").append(Rchat.config.html);
+    if(!_userdata.session_logged_in && Rchat.config.allow_guests){
+Rchat.internal.get_lt();
+};
     Rchat.internal.op_cl($("#chat_btn"));
     Rchat.internal.vars.receiving = 1;
     Rchat.internal.get_data();
@@ -74,6 +77,16 @@ $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
         }, Rchat.config.delay);
     };
 };
+Rchat.internal.get_lt=function(){
+if(localStorage.getItem("lt"+Rchat.config.topic)){
+Rchat.internal.vars.lt=localStorage.getItem("lt"+Rchat.config.topic);
+} else {
+$.get("/post?t="+Rchat.config.topic+"&mode=reply", function(data){
+Rchat.internal.vars.lt=$("[name='lt'], data").val();
+localStorage.setItem("lt"+Rchat.config.topic, Rchat.internal.vars.lt);
+})
+}
+};
 Rchat.internal.comp = function(m) {
     return "<div id=\"chat_sis\" class=\"chat\"><div id=\"chat_bl\"><div id=\"chat_group\"><div id=\"chat_avatar\"><img src=\"" + _userdata.avatar.match(/"(.+?)(?=")/)[1] + "\"/></div><div id=\"chat_name\">" + _userdata.username + "</div></div><div id=\"chat_message\">" + m + "</div></div></div>";
 };
@@ -90,6 +103,7 @@ Rchat.internal.send = function(me) {
     };
     Rchat.internal.vars.sending = 1;
     $("#chat_form_send").toggleClass("act_bt");
+if(_userdata.session_logged_in){
     $.post("/post", {
         mode: "reply",
         t: Rchat.config.topic,
@@ -97,9 +111,23 @@ Rchat.internal.send = function(me) {
         post: "Ok",
         auth: Rchat.internal.vars.auth_data
     }, function() {
-        Rchat.internal.vars.sending = 0;
-        $(".act_bt").removeClass("act_bt");
+        RRchat.internal.after_send();
     });
+} else {
+$.post("/post", {
+        mode: "reply",
+        t: Rchat.config.topic,
+        message: Rchat.internal.comp(me),
+        post: "Ok",
+        auth: Rchat.internal.vars.auth_data,
+        lt: Rchat.internal.vars.lt
+    }, function() {
+        RRchat.internal.after_send();
+    });
+};
+Rchat.internal.after_send=function(){
+Rchat.internal.vars.sending = 0;
+        $(".act_bt").removeClass("act_bt");
 };
 Rchat.internal.init_send = function() {
     $("#chat_form_send").click(function() {
