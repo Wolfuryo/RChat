@@ -31,7 +31,6 @@
     width: 70%;
     height: 400px;
     background: #f2f2f2;
-    border: 2px solid #055;
 }
 
 #chat_inner.chat_open {
@@ -48,13 +47,13 @@
 
 #chat_content {
     height: 340px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #chat_form {
     width: 100%;
     position: absolute;
-    border-top: 2px solid #055;
+    border-top: 1px solid #AEB3B5;
     bottom: 0px;
 }
 
