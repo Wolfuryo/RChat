@@ -114,7 +114,7 @@ Rchat.internal.send = function(me) {
     $("#chat_form_send").toggleClass("act_bt");
     $.post("/post", {
         mode: "reply",
-        t: Rchat.config.topic.match(/\d+/),
+        t: Rchat.config.topic.match(/\d+/)[0],
         message: Rchat.internal.comp(me),
         post: "Ok",
         auth: Rchat.internal.vars.auth_data
