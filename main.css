@@ -3,12 +3,13 @@
     position: fixed;
     bottom: 5px;
     right: 5px;
-    background: #055;
+    background: #f2f2f2;
     opacity: 0.8;
     cursor: pointer;
     padding: 5px;
-    border-bottom: 2px solid #088;
-    color: #f2f2f2;
+    border-bottom: 2px solid #2f2f2f;
+    color: #2f2f2f;
+    padding-right:0px;
 }
 
 #chat_btn:hover {
@@ -16,7 +17,7 @@
 }
 
 #chat_btn_notif_con {
-    background: #099;
+    background: #2f2f2f;
     color: yellow;
     padding: 5px;
 }
@@ -104,11 +105,10 @@
 #chat_content>#chat_bl>#chat_group>#chat_avatar {
     padding-top: 3px;
     border-radius: 100%;
-    background: #088;
 }
 
 #chat_content>#chat_bl>#chat_group {
-    background: #098;
+    background: #2f2f2f;
     color: #f2f2f2;
     width: 100%;
 }
@@ -125,7 +125,7 @@
 #chat_content>#chat_bl>#chat_group>#chat_name {
     position: relative;
     top: -12px;
-    background: #088;
+    background: #6f6f6f;
     padding-left: 2px;
     margin-left: 2px;
     border-left: 2px solid #f2f2f2;
