@@ -116,8 +116,10 @@
 #chat_content>#chat_bl>#chat_message {
     background: #055 color: #f2f2f2 position: relative;
     padding: 9.5px;
-    display: inline-table;
+    display: inline-block;
     word-break: break-all;
+    border: 1px solid #AEB3B5;
+    border-top: 0px;
 }
 
 #chat_content>#chat_bl>#chat_group>#chat_name {
