@@ -1,5 +1,6 @@
 Rchat.internal = {};
 Rchat.internal.init = function() {
+if(!localStorage.chat_op) localStorage.setItem("chat_op", "0");
     $("body").append(Rchat.config.html);
     Rchat.internal.op_cl($("#chat_btn"));
     Rchat.internal.vars.receiving = 1;
