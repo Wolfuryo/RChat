@@ -93,7 +93,7 @@ Rchat.internal.send = function(me) {
         message: Rchat.internal.comp(me),
         post: "Ok",
         auth: Rchat.internal.vars.auth_data
-    }).fail(function() {}).always(function() {
+    }, function() {
         Rchat.internal.vars.sending = 0;
         $(".act_bt").removeClass("act_bt");
     });
