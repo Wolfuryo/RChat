@@ -1,12 +1,13 @@
 Rchat.internal = {};
 Rchat.internal.init = function() {
-if(!localStorage.chat_op) localStorage.setItem("chat_op", "0");
+    if (!localStorage.chat_op) localStorage.setItem("chat_op", "0");
     $("body").append(Rchat.config.html);
     Rchat.internal.op_cl($("#chat_btn"));
     Rchat.internal.vars.receiving = 1;
     Rchat.internal.get_data();
     Rchat.internal.init_send();
     Rchat.internal.smilies_init();
+    Rchat.internal.reset();
 };
 Rchat.internal.op_cl = function(elem) {
     if (localStorage.getItem("chat_op") == "1") {
@@ -16,11 +17,29 @@ Rchat.internal.op_cl = function(elem) {
     elem.click(function(e) {
         $("#chat_inner").toggleClass("chat_open");
         localStorage.setItem("chat_op", $("#chat_inner").hasClass("chat_open") ? "1" : "0");
-if(localStorage.chat_op=="1" && !$("#chat_btn_notif").text()=="0"){     
-$("#chat_btn_notif").text("0");
-$('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
-};
+        if (localStorage.chat_op == "1" && !$("#chat_btn_notif").text() == "0") {
+            $("#chat_btn_notif").text("0");
+            $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
+        };
     });
+};
+Rchat.internal.reset = function() {
+    $("#chat_head_span").click(function() {
+        $(this).css({
+            cursor: "not-allowed",
+            opacity: "0.9"
+        });
+        if (!Rchat.internal.vars.resetting) return;
+        Rchat.internal.vars.resetting = 1;
+        localStorage.removeItem("chat_op");
+        localStorage.removeItem("emo");
+        Rchat.internal.vars.resetting = 1;
+        $(this).css({
+            cursor: "pointer",
+            opacity: "1.0"
+        });
+    });
+    window.location.reload();
 };
 Rchat.internal.vars = {};
 Rchat.internal.vars.sending = 0;
@@ -28,11 +47,12 @@ Rchat.internal.vars.receiving = 1;
 Rchat.internal.vars.mess_per_page = 20;
 Rchat.internal.vars.ct = [];
 Rchat.internal.vars.auth_data = [];
-Rchat.internal.vars.index=0;
+Rchat.internal.vars.index = 0;
+Rchat.internal.vars.resetting = 0;
 Rchat.internal.get_data = function() {
     if (Rchat.internal.vars.receiving) {
-        $.get(Rchat.config.topic+"?view=newest", function(data) {
-Rchat.internal.vars.index++;
+        $.get(Rchat.config.topic + "?view=newest", function(data) {
+            Rchat.internal.vars.index++;
             if ($("#chat_content>center").length) $("#chat_content>center").remove();
             var m = $("#chat_sis", data),
                 len = m.length,
@@ -44,9 +64,9 @@ Rchat.internal.vars.index++;
                 for (i; i < len; i++) {
                     Rchat.internal.vars.ct.push(m.eq(i).html());
                     $("#chat_content").append(m.eq(i).html());
-                    if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1 && !Rchat.internal.vars.index){
-$("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
-};
+                    if (localStorage.chat_op == "0" && m.eq(i).html().split(_userdata.username).length == 1 && !Rchat.internal.vars.index) {
+                        $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/)) + 1);
+                    };
                     $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
                 };
             } else {
@@ -57,9 +77,9 @@ $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
                     } else {
                         if (m.eq(i).html() != Rchat.internal.vars.ct[i]) {
                             $("#chat_content").append(m.eq(i).html());
-if(localStorage.chat_op=="0" && m.eq(i).html().split(_userdata.username).length==1 && !Rchat.internal.vars.index){
-$("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/))+1);
-};
+                            if (localStorage.chat_op == "0" && m.eq(i).html().split(_userdata.username).length == 1 && !Rchat.internal.vars.index) {
+                                $("#chat_btn_notif").text(parseInt($("#chat_btn_notif").text().match(/\d+/)) + 1);
+                            };
                             $('#chat_content').scrollTop($('#chat_content')[0].scrollHeight);
                             Rchat.internal.vars.ct[i] = m.eq(i).html();
                         }
@@ -82,7 +102,7 @@ Rchat.internal.comp = function(m) {
 Rchat.internal.send = function(me) {
     if (Rchat.internal.vars.sending) return;
     if (me.length == 0) {
-        $("#chat_btts").after("<div id='send_fail'>Nu poti trimite un mesaj gol</div>");
+        $("#chat_btts").after("<div id='send_fail'>" + Rchat.lang.no_empty + "</div>");
         setTimeout(function() {
             $("#send_fail").fadeOut(function() {
                 $("#send_fail").remove();
@@ -102,9 +122,9 @@ Rchat.internal.send = function(me) {
         Rchat.internal.after_send();
     });
 };
-Rchat.internal.after_send=function(){
-Rchat.internal.vars.sending = 0;
-        $(".act_bt").removeClass("act_bt");
+Rchat.internal.after_send = function() {
+    Rchat.internal.vars.sending = 0;
+    $(".act_bt").removeClass("act_bt");
 };
 Rchat.internal.init_send = function() {
     $("#chat_form_send").click(function() {
@@ -181,7 +201,7 @@ Rchat.internal.smilies_bind = function() {
     if ($("#chat_smi_pop").length == 1) {
         $("#chat_smi_pop").remove();
     } else {
-        $("#chat_form").append("<div id='chat_smi_pop'><div id='chat_smi_pop_head'>Emoji</div></div>");
+        $("#chat_form").append("<div id='chat_smi_pop'><div id='chat_smi_pop_head'>" + Rchat.lang.emoji_head + "</div></div>");
         Rchat.internal.smilies.populate();
 
     };
