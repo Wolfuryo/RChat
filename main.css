@@ -1,3 +1,8 @@
+#chat {
+    font-family: Arial;
+    font-size: 15px;
+}
+
 #chat_btn {
     transition-duration: 0.4s;
     position: fixed;
@@ -9,7 +14,7 @@
     padding: 5px;
     border-bottom: 2px solid #2f2f2f;
     color: #2f2f2f;
-    padding-right:0px;
+    padding-right: 0px;
 }
 
 #chat_btn:hover {
@@ -43,18 +48,20 @@
 #chat_head {
     padding: 5px;
     color: #2f2f2f;
-    box-shadow:0 4px 2px -2px #AEB3B5;
+    box-shadow: 0 4px 2px -2px #AEB3B5;
 }
+
 #chat_head>span {
-float: right;
-background: #2f2f2f;
-color: rgb(242, 242, 242);
-padding: 5px;
-position: relative;
-top: -5px;
-right: -5px;
-cursor: pointer;
+    float: right;
+    background: #2f2f2f;
+    color: rgb(242, 242, 242);
+    padding: 5px;
+    position: relative;
+    top: -5px;
+    right: -5px;
+    cursor: pointer;
 }
+
 #chat_content {
     height: 340px;
     overflow-y: auto;
