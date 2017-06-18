@@ -33,7 +33,7 @@ Rchat.internal.reset = function() {
         Rchat.internal.vars.resetting = 1;
         localStorage.removeItem("chat_op");
         localStorage.removeItem("emo");
-        Rchat.internal.vars.resetting = 1;
+        Rchat.internal.vars.resetting = 0;
         $(this).css({
             cursor: "pointer",
             opacity: "1.0"
