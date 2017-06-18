@@ -38,8 +38,8 @@ Rchat.internal.reset = function() {
             cursor: "pointer",
             opacity: "1.0"
         });
-    });
     window.location.reload();
+    });
 };
 Rchat.internal.vars = {};
 Rchat.internal.vars.sending = 0;
