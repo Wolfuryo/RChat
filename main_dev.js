@@ -53,14 +53,17 @@ Rchat.internal.get_data = function() {
     if (Rchat.internal.vars.receiving) {
         $.get(Rchat.config.topic + "?view=newest", function(data) {
             Rchat.internal.vars.index++;
-            if ($("#chat_content>center").length) $("#chat_content>center").remove();
+            if ($("#chat_content>center").length){
+                if(localStorage.chats!=undefined)                $("#chat_content").append("<div>"+localStorage.chats+"</div>");
+                $("#chat_content>center").remove();
+            };
             var m = $("#chat_sis", data),
                 len = m.length,
                 i = 0;
             Rchat.internal.vars.auth_data = [$("[name='auth[]']", data).eq(0).val(), $("[name='auth[]']", data).eq(1).val()];
             if (len < Rchat.internal.vars.ct.length) {
                 Rchat.internal.vars.ct = [];
-                $("#chat_content").empty();
+                localStorage.setItem("chats", $("#chat_content").html());
                 for (i; i < len; i++) {
                     Rchat.internal.vars.ct.push(m.eq(i).html());
                     $("#chat_content").append(m.eq(i).html());
