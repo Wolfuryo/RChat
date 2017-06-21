@@ -104,34 +104,34 @@
     width: 100%;
 }
 
-#chat_content>#chat_bl {
+#chat_content>#chat_bl, #chat_content>div>#chat_bl {
     padding: 3px;
 }
 
-#chat_content>#chat_bl>* {
+#chat_content>#chat_bl>*, #chat_content>div>#chat_bl>* {
     display: inline-table;
 }
 
-#chat_content>#chat_bl>#chat_group>#chat_avatar>img {
+#chat_content>#chat_bl>#chat_group>#chat_avatar>img, #chat_content>div>#chat_bl>#chat_group>#chat_avatar>img {
     border-radius: 100%;
     width: 30px;
     height: 30px;
     border: 2px solid #f2f2f2;
 }
 
-#chat_content>#chat_bl>#chat_group>#chat_avatar {
+#chat_content>#chat_bl>#chat_group>#chat_avatar, #chat_content>div>#chat_bl>#chat_group>#chat_avatar {
     padding-top: 3px;
     border-radius: 100%;
 }
 
-#chat_content>#chat_bl>#chat_group {
+#chat_content>#chat_bl>#chat_group, #chat_content>div>#chat_bl>#chat_group {
     background: #2f2f2f;
     color: #f2f2f2;
     width: 100%;
 }
 
-#chat_content>#chat_bl>#chat_message {
-    background: #055 color: #f2f2f2 position: relative;
+#chat_content>#chat_bl>#chat_message, #chat_content>div>#chat_bl>#chat_message {
+    position: relative;
     padding: 9.5px;
     display: block;
     word-break: break-all;
@@ -139,7 +139,7 @@
     border-top: 0px;
 }
 
-#chat_content>#chat_bl>#chat_group>#chat_name {
+#chat_content>#chat_bl>#chat_group>#chat_name, #chat_content>div#chat_bl>#chat_group>#chat_name {
     position: relative;
     top: -12px;
     background: #6f6f6f;
@@ -148,7 +148,7 @@
     border-left: 2px solid #f2f2f2;
 }
 
-#chat_content>#chat_bl>#chat_group>* {
+#chat_content>#chat_bl>#chat_group>*, #chat_content>div>#chat_bl>#chat_group>* {
     display: inline-table;
 }
 
