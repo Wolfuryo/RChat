@@ -100,7 +100,7 @@ Rchat.internal.get_data = function() {
     };
 };
 Rchat.internal.comp = function(m) {
-    return "<div id=\"chat_sis\" class=\"chat\" id=\"chat"+$("#chat_bl").attr("id").match(/\d+/)[0]+"\"><div id=\"chat_bl\"><div id=\"chat_group\"><div id=\"chat_avatar\"><img src=\"" + _userdata.avatar.match(/"(.+?)(?=")/)[1] + "\"/></div><div id=\"chat_name\">" + _userdata.username + "</div></div><div id=\"chat_message\">" + m + "</div></div></div>";
+    return "<div id=\"chat_sis\" class=\"chat"+$("#chat_bl").attr("id").match(/\d+/)[0]+"\"\"><div id=\"chat_bl\"><div id=\"chat_group\"><div id=\"chat_avatar\"><img src=\"" + _userdata.avatar.match(/"(.+?)(?=")/)[1] + "\"/></div><div id=\"chat_name\">" + _userdata.username + "</div></div><div id=\"chat_message\">" + m + "</div></div></div>";
 };
 Rchat.internal.send = function(me) {
     if (Rchat.internal.vars.sending) return;
