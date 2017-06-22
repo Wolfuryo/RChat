@@ -54,7 +54,7 @@ Rchat.internal.get_data = function() {
         $.get(Rchat.config.topic + "?view=newest", function(data) {
             Rchat.internal.vars.index++;
             if ($("#chat_content>center").length){
-                if(localStorage.chats!=undefined)                $("#chat_content").append("<div>"+localStorage.chats+"</div>");
+                if(localStorage.chats!=undefined) $("#chat_content").append("<div>"+localStorage.chats+"</div>");
                 $("#chat_content>center").remove();
             };
             var m = $("#chat_sis", data),
@@ -100,7 +100,7 @@ Rchat.internal.get_data = function() {
     };
 };
 Rchat.internal.comp = function(m) {
-    return "<div id=\"chat_sis\"><div id=\"chat_bl\" class=\"chat"+$('#chat_bl').last().attr('class').match(/\d+/)[0]+"\"\"><div id=\"chat_group\"><div id=\"chat_avatar\"><img src=\"" + _userdata.avatar.match(/"(.+?)(?=")/)[1] + "\"/></div><div id=\"chat_name\">" + _userdata.username + "</div></div><div id=\"chat_message\">" + m + "</div></div></div>";
+    return "<div id=\"chat_sis\"><div id=\"chat_bl\" class=\"chat"+$('#chat_bl').last().attr('class').match(/\d+/)[0]+"\"><div id=\"chat_group\"><div id=\"chat_avatar\"><img src=\"" + _userdata.avatar.match(/"(.+?)(?=")/)[1] + "\"/></div><div id=\"chat_name\">" + _userdata.username + "</div></div><div id=\"chat_message\">" + m + "</div></div></div>";
 };
 Rchat.internal.send = function(me) {
     if (Rchat.internal.vars.sending) return;
